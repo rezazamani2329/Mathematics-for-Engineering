@@ -6,3 +6,5 @@ this course has five parts:
 3-Vector Calculus for Engineers
 4- Numerical Methods for Engineers
 5- Mathematics for Engineers: The capstone Course 
+here is the address for that: https://www.coursera.org/specializations/mathematics-engineers
+
