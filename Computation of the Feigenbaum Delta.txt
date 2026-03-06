@@ -1,0 +1,26 @@
+num_doublings=11; num_newton=10; 
+
+n=0; m(1+n)=2;         %analytic
+n=1; m(1+n)=1+sqrt(5); %analytic
+delta=zeros(1,11); delta(1)=5;
+
+for n=2:num_doublings
+    N=2^n; 
+    mu=m(n)+(m(n)-m(n-1))/delta(n-1); %initial guess for m(1+n)
+    for i=1:num_newton %Newton's iteration
+        x=1/2; y=0;
+        for j=1:N
+            y=x*(1-x) + mu*y*(1-2*x);
+            x=mu*x*(1-x);
+        end
+        Delta = (x-1/2)/y; %Newton's method
+        mu = mu - Delta; 
+    end
+    m(1+n)=mu;
+    delta(n)=(m(n)-m(n-1))/(m(n+1)-m(n));
+end
+% Output your results
+fprintf('n        delta(n)\n');
+for n=1:num_doublings
+    fprintf('%2g %18.15f\n',n,delta(n));
+end
